@@ -12,7 +12,7 @@ function Navbar() {
       <div className="flex items-center justify-center flex-col sm:flex-row gap-4">
         <SearchField />
         <NavButton buttonLabel="Login" url="login" />
-        <NavButton buttonLabel="Subjects" url="/subjects" />
+        <NavButton buttonLabel="Subjects" url="subjects" />
         <NavButton buttonLabel="My Learning" url="myLearning" />
         <NavButton buttonLabel="About" url="about" />
         <NavButton buttonLabel="Home" url="" />
