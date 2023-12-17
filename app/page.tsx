@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <main >
 
-     <div>Subjects {subjects.length}</div>
+     <div>d{subjects.length}</div>
     </main>
   )
 }

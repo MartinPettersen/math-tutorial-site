@@ -2,7 +2,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div>Login Page</div>
+    <div className='flex justify-center items-center bg-sky-50 h-[90%]'>Login Page</div>
   )
 }
 
