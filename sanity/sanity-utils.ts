@@ -12,7 +12,7 @@ export default async function getSubjects() {
             _id,
             _createdAt,
             subject,
-            "slug": slug.current,
+            'slug': slug.current,
             symbol,
             information,
             tests

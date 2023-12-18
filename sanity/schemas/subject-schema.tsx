@@ -30,6 +30,12 @@ const subject = {
             title: 'Tests',
             type: 'array',
             of: [{ type: 'block' }]
+        },
+        {
+            name: 'tags',
+            title: 'Tafs',
+            type: 'array',
+            of: [{type: 'string'}]
         }
     ]
 }
