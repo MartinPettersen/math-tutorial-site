@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 
 function Navbar() {
   return (
-    <div className="flex items-center   flex-col sm:flex-row sm:h-[10%] bg-sky-500 justify-between p-4 sm:pl-20 sm:pr-20">
+    <div className="flex items-center   flex-col sm:flex-row sm:h-[10%] shadow-xl bg-white justify-between p-4 sm:pl-20 sm:pr-20">
       <div className="p-4 ">
         <Logo />
       </div>

@@ -1,13 +1,11 @@
+/* eslint-disable import/export */
+import { Subject } from "@/types/Subject";
 import { createClient, groq } from "next-sanity";
+import clientConfig from "./config/client-config";
 
-export default async function getSubjects() {
-    const client = createClient({
-        projectId: "zd41uw5u",
-        dataset: "production",
-        apiVersion: "2023-12-12",
-    });
+export async function getSubjects(): Promise<Subject[]> {
 
-    return client.fetch(
+    return createClient(clientConfig).fetch(
         groq`*[_type == "subject"]{
             _id,
             _createdAt,
@@ -15,7 +13,24 @@ export default async function getSubjects() {
             'slug': slug.current,
             symbol,
             information,
-            tests
+            tests,
         }`
     )
 }
+
+export async function getSubject(slug: string): Promise<Subject> {
+
+    return createClient(clientConfig).fetch(
+        groq`*[_type == "subject" && slug.current == $slug][0]{
+            _id,
+            _createdAt,
+            subject,
+            "slug": slug.current,
+            symbol,
+            information,
+            tests,
+        }`,
+        { slug }
+    )
+}
+

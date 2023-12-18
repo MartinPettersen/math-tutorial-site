@@ -1,6 +1,6 @@
 import React from "react";
 
-import getSubjects from "@/sanity/sanity-utils";
+import { getSubjects } from "@/sanity/sanity-utils";
 import SubjectsDisplay from "./SubjectsDisplay";
 
 async function SubjectsContainer() {
@@ -8,10 +8,9 @@ async function SubjectsContainer() {
 
   return (
     <div className="flex flex-col justify-center items-center w-full gap-2 h-full p-8">
-      <p>number of subjects {subjects.length}</p>
       <div className="flex w-[80%] sm:w-[20%] flex-col gap-2">
-        {subjects.map((subject: any) => (
-          <SubjectsDisplay symbol={subject.symbol} key={subject.subject} subjectName={subject.subject} completed={false}/>
+        {subjects.map((subject) => (
+          <SubjectsDisplay slug={subject.slug} symbol={subject.symbol} key={subject.subject} subjectName={subject.subject} completed={false}/>
         ))}
       </div>
     </div>
