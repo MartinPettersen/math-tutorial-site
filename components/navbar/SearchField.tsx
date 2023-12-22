@@ -12,8 +12,8 @@ function SearchField() {
     }
 
     return (
-    <div className='bg-green-400'>
-        <input className='text-black' type="text" data-testid ="search" onClick={() => onSearchFieldClicked()} onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} value={searchTerm}/>
+    <div className='border border-gray-800 p-1 rounded-md '>
+        <input className='text-black ' type="text" data-testid ="search" onClick={() => onSearchFieldClicked()} onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} value={searchTerm}/>
     </div>
   )
 }

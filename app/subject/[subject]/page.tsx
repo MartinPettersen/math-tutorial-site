@@ -14,6 +14,7 @@ async function Subject({ params }: Props) {
 
   const subject = await getSubject(slug);
 
+  
   return (
     <div className="h-[90%] flex items-center justify-center">
       <div className="flex flex-col gap-4 items-center justify-center w-[80%] h-[100%]">
