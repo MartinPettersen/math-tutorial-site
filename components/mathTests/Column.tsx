@@ -7,6 +7,8 @@ import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 
 import Option from "./Option";
+import { useSelector } from "react-redux";
+import { RootState } from "@/app/Redux/store";
 
 type Props = {
   column: Column;
@@ -16,6 +18,8 @@ type Props = {
 function Column({ column }: Props) {
   const options = column.optionIds;
 
+
+ 
   return (
     <Droppable key={column.id} droppableId={column.id} direction='horizontal'>
       {(provided, snapshot) => (

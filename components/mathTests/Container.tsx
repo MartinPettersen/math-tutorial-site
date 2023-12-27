@@ -13,6 +13,7 @@ type Props = {
 
 function Container({ subject }: Props) {
   const columns = useSelector((state: RootState) => state.container.columns);
+
   const dispatch = useDispatch();
 
   const onDragEnd = (result: any) => {
