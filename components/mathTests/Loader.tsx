@@ -8,7 +8,6 @@ import Container from './Container'
 
 type Props = {
     subject: Subject;
-
 }
 
 function Loader({ subject } : Props) {
@@ -16,8 +15,6 @@ function Loader({ subject } : Props) {
 
     const [winReady, setwinReady] = useState(false)
 
-    console.log("loader called")
-    console.log(subject)
     useEffect(() => {
 
         dispatch(loadOptionIds(subject.test.options))

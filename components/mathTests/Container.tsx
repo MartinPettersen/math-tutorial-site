@@ -6,11 +6,9 @@ import { RootState } from "@/app/Redux/store";
 import { DragDropContext } from "react-beautiful-dnd";
 import {
   changeOptionOrder,
-  loadOptionIds,
 } from "@/app/Redux/Features/container/containerSlice";
-import Column from "./Column";
 import { Subject } from "@/types/Subject";
-import { Column as ColumnType } from "@/types/Column";
+import Column from "./Column";
 
 type Props = {
   subject: Subject;
@@ -22,12 +20,6 @@ function Container({ subject }: Props) {
   const columns = useSelector((state: RootState) => state.container.columns);
   const options = useSelector((state: RootState) => state.container.options);
 
-  // const [columns, setColumns] = useState<ColumnType[]>();
-  // setColumns(columnsTemp)
-
-  const correctAnswers = useSelector(
-    (state: RootState) => state.container.correctAnswer
-  );
   const [testResult, setTestResult] = useState(false);
   const [attempted, setAttempted] = useState(false);
 
@@ -77,8 +69,6 @@ function Container({ subject }: Props) {
 
   const checkAnswer = () => {
     setAttempted(true);
-
-
     if ( columns[1].optionIds.length === subject.test.correctAnswer[0].options.length ) {
       for (let i = 0; i < subject.test.correctAnswer.length; i += 1) {
         let allCorrect = true;
@@ -97,6 +87,15 @@ function Container({ subject }: Props) {
     }
   };
 
+  const checkTest = () => {
+
+    if (testResult) {
+      return <div>You did it</div>
+    } 
+      return <div>Try Again</div>
+
+  }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       {winReady ? (
@@ -105,11 +104,7 @@ function Container({ subject }: Props) {
             <Column key={column.id} column={column} />
           ))}
           {attempted ? (
-            testResult ? (
-              <div>You did it</div>
-            ) : (
-              <div>Try Again</div>
-            )
+            checkTest()
           ) : null}
           <button
             type="button"
