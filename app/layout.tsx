@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 
-import Providers from "./Redux/provider";
 import AuthProvider from "@/components/AuthProvider";
+import Providers from "./Redux/provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
