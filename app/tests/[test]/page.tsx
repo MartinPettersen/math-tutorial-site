@@ -8,6 +8,7 @@ import React from "react";
 
 
 import Container from "@/components/mathTests/Container";
+import Loader from "@/components/mathTests/Loader";
 
 
 
@@ -19,23 +20,25 @@ async function Subject({ params }: Props) {
   const slug = params.test;
 
   const subject = await getSubject(slug);
-
+  
 
   // <TestContainer data={initialData} />
 
-
+  console.log('could a load page work')
 
   return (
     <div className="h-[90%] flex items-center justify-center">
       <div className="flex flex-col gap-4 items-center justify-center w-[80%] h-[100%]">
         <header className="font-3xl  font-extrabold">{subject.subject}</header>
-        <div>Drag and drop the operator and number needed to fullfill the task</div>
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4  p-2 rounded-md">
-          <Container subject="Division"/>
+        <div>Drag and drop the operator and numbers needed to fullfill the task</div>
+        <h1>Task:</h1>
+        <div>{subject.test.testDescription}</div>
+
+
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 p-2 rounded-md justify-center sm:w-[40%]">
+          <Loader subject={subject}/>
         </div>
-        <div className="border border-black p-4 bg-emerald-500 hover:bg-emerald-300 rounded-md">
-          Check Answer
-        </div>
+        
       </div>
     </div>
   );

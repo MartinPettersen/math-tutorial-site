@@ -5,10 +5,13 @@ import { Option } from '@/types/Option';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createSlice } from '@reduxjs/toolkit';
 
+
 export interface ContainerState {
     options: Option[],
     columns: Column[],
     columnOrder: string[]
+    correctAnswer: string[][]
+
 }
 
 /*
@@ -62,12 +65,18 @@ const initialData = {
         ],
       },{
         id: "column-2",
-        title: "answer",
+        title: "answerfield",
         optionIds: [],
       },
     ],
 
     columnOrder: ["column-1", "column-2"],
+    correctAnswer: 
+    [
+      ["number-1", "operator-1", "number-2"],
+      ["number-2", "operator-1", "number-1"],
+    ],
+
   };
 
   export const containerSlice = createSlice({
@@ -87,9 +96,35 @@ const initialData = {
             // console.log(state.columns[0].optionIds[0])
 
           },
+          loadOptionIds: (state, action) => {
+            console.log(action.payload)
+            
+            
+            // state.options.splice(0, 1)
+            state.options.push({ id: "test-1", content: "?" })
+            
+            state.options.splice(0, state.options.length)
+            state.columns[1].optionIds.splice(0, state.columns[1].optionIds.length)
+            state.columns[0].optionIds.splice(0, state.columns[0].optionIds.length)
+
+
+            action.payload.forEach((element: string, index: number) => {
+
+              state.options.push({ id: `opt-${index}`, content: element })
+              state.columns[0].optionIds.push(`opt-${index}`)
+              
+            }
+            );
+
+            // state.columns[0].optionIds.splice(0, state.columns[0].optionIds.length)
+
+            // state.columns[1].optionIds.push(...action.payload)
+            // console.log(state.columns[1].optionIds)
+
+          },
     }
   });
 
-  export const { changeOptionOrder} = containerSlice.actions;
+  export const { changeOptionOrder, loadOptionIds} = containerSlice.actions;
 
   export default containerSlice.reducer;

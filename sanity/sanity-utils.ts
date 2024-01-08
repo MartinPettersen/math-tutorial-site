@@ -13,7 +13,8 @@ export async function getSubjects(): Promise<Subject[]> {
             'slug': slug.current,
             symbol,
             information,
-            tests,
+            tags,
+            test,
         }`
     )
 }
@@ -28,7 +29,8 @@ export async function getSubject(slug: string): Promise<Subject> {
             "slug": slug.current,
             symbol,
             information,
-            tests,
+            tags,
+            test,
         }`,
         { slug }
     )
