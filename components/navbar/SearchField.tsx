@@ -8,12 +8,21 @@ function SearchField() {
 
     const onSearchFieldClicked = () => {
         setSearchFieldClicked(!searchFieldClicked)
-        setSearchTerm("")
+            
+            if (searchTerm === "Search..."){
+                setSearchTerm("")
+            }
+    }
+    const onSearchFieldBlur = () => {
+        // setSearchFieldClicked(!searchFieldClicked)
+        if (searchTerm === ""){
+            setSearchTerm("Search...")
+        }
     }
 
     return (
-    <div className='border border-gray-800 p-1 rounded-md '>
-        <input className='text-black ' type="text" data-testid ="search" onClick={() => onSearchFieldClicked()} onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} value={searchTerm}/>
+    <div className='border-b-2 border-slate-800'>
+        <input className='text-black ' type="text" data-testid ="search" onFocus={() => onSearchFieldClicked()} onBlur={() => onSearchFieldBlur()}  onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} value={searchTerm}/>
     </div>
   )
 }

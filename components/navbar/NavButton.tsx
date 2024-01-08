@@ -8,7 +8,7 @@ type Props = {
 
 function NavButton({buttonLabel, url}: Props) {
   return (
-    <Link href={`/${url}`}  className='text-xl'>{buttonLabel}</Link>
+    <Link href={`/${url}`}  className='text-xl hover:underline'>{buttonLabel}</Link>
   )
 }
 
