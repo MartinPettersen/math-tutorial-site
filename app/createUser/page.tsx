@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 type FormData = {
-  email: string
-  password: string
-  name: string
-}
+  email: string;
+  password: string;
+  name: string;
+};
 
 function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -18,7 +18,7 @@ function page() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     password: "",
-    email: ""
+    email: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -37,7 +37,7 @@ function page() {
     const res = await fetch("/api/Users", {
       method: "POST",
       body: JSON.stringify({ formData }),
-      headers: new Headers({"content-type": "application/json"}),
+      headers: new Headers({ "content-type": "application/json" }),
     });
 
     if (!res.ok) {
@@ -60,48 +60,53 @@ function page() {
           <p className="font-bold text-red-500">{errorMessage}</p>
           <h1>Create your account</h1>
           <div className="flex flex-col">
-            <label>Your user Name:</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              onChange={formChange}
-              required
-              value={formData.name}
-              className="p-2 border-4"
-            />
+            <label htmlFor="name" className="flex flex-col">
+              Your user Name:
+              <input
+                id="name"
+                name="name"
+                type="text"
+                onChange={formChange}
+                required
+                value={formData.name}
+                className="p-2 border-4"
+              />
+            </label>
           </div>
           <div className="flex flex-col">
-            <label>Your Email:</label>
-            <input
-              id="email"
-              name="email"
-              type="text"
-              onChange={formChange}
-              required
-              value={formData.email}
-              className="p-2 border-4"
-            />
+            <label htmlFor="email" className="flex flex-col">
+              Your Email:
+              <input
+                id="email"
+                name="email"
+                type="text"
+                onChange={formChange}
+                required
+                value={formData.email}
+                className="p-2 border-4"
+              />
+            </label>
           </div>
           <div className="flex flex-col">
-            <label>Your Password:</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              onChange={formChange}
-              required
-              value={formData.password}
-              className="p-2 border-4"
-            />
+            <label htmlFor="password" className="flex flex-col">
+              Your Password:
+              <input
+                id="password"
+                name="password"
+                type="password"
+                onChange={formChange}
+                required
+                value={formData.password}
+                className="p-2 border-4"
+              />
+            </label>
           </div>
           <input
-          type="submit"
-          value="Create User"
-          className="bg-blue-500 p-2 text-white hover:cursor-pointer"
+            type="submit"
+            value="Create User"
+            className="bg-blue-500 p-2 text-white hover:cursor-pointer"
           />
         </form>
-        
       </div>
     </div>
   );
