@@ -57,3 +57,21 @@ export async function searchSubject(searchTerm: string): Promise<Subject[]> {
         { searchTerm }
     )
 }
+
+export async function newestSubject(): Promise<Subject[]> {
+    
+    return createClient(clientConfig).fetch(
+        groq`*[_type == "subject" ]{
+            _id,
+            _createdAt,
+            subject,
+            'slug': slug.current,
+            symbol,
+            information,
+            tags,
+            test,
+            "image": image.asset->url,
+            "alt": image.alt,
+        }`
+    )
+}

@@ -5,11 +5,21 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
+type FormData = {
+  email: string
+  password: string
+  name: string
+}
+
 function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    password: "",
+    email: ""
+  });
   const [errorMessage, setErrorMessage] = useState("");
 
   const formChange = (e: any) => {

@@ -1,3 +1,4 @@
+import SubjectsShowcase from '@/components/subjects/SubjectsShowcase';
 import React from 'react';
 
 // import getSubjects from '@/sanity/sanity-utils'
@@ -9,7 +10,11 @@ export default async function Home() {
   return (
     <main className='flex items-center justify-center h-[90%]'>
 
-      <div className='flex items-center justify-center h-[100%] w-[80%]'>Home  Page</div>
+      <div className='flex items-center justify-center h-[100%] w-[80%]'>
+
+        <SubjectsShowcase />
+
+      </div>
 
     </main>
   )
