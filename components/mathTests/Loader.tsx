@@ -8,9 +8,11 @@ import Container from './Container'
 
 type Props = {
     subject: Subject;
+    // eslint-disable-next-line react/require-default-props
+    user?: string;
 }
 
-function Loader({ subject } : Props) {
+function Loader({ subject, user="" } : Props) {
     const dispatch = useDispatch();
 
     const [winReady, setwinReady] = useState(false)
@@ -23,9 +25,10 @@ function Loader({ subject } : Props) {
 
   return (
     <div>
+      {user}
         {winReady ?
         (
-          <Container subject={subject} />
+          <Container subject={subject} user={user} />
         ) : null}
     </div>
   )

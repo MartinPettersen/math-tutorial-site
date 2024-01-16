@@ -10,6 +10,17 @@ type Props = {
 };
 
 function SubjectsDisplay({ subjectName, completed, symbol, slug }: Props) {
+
+  /*
+  <Image
+              src={review.image}
+              alt={review.alt}
+              width={400}
+              height={400}
+              className="object-cover"
+            />
+  */
+
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return (
     <Link href={`subject/${slug}`}

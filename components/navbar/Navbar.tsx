@@ -22,7 +22,7 @@ async function Navbar() {
         <NavButton buttonLabel="My Learning" url="myLearning" />
         <NavButton buttonLabel="About" url="about" />
         <NavButton buttonLabel="Home" url="" />
-        {session ? <NavButton buttonLabel="Logout" url="api/auth/signout?callbackUrl=/" /> : <NavButton buttonLabel="Login" url="api/auth/signin" />}
+        {session ? <NavButton buttonLabel="Logout" url="api/auth/signout?callbackUrl=/" /> : <NavButton buttonLabel="Login" url="login" />}
       </div>
     </div>
   );

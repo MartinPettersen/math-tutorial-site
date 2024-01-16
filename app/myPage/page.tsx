@@ -1,11 +1,11 @@
 import { getServerSession } from "next-auth";
 import React from "react";
 import { redirect } from "next/navigation";
-import DeletePopup from "@/components/user/DeletePopup";
-import { option } from "../api/auth/[...nextauth]/option";
 import UserPage from "@/components/user/UserPage";
+import { option } from "../api/auth/[...nextauth]/option";
 
 async function page() {
+  
   const session = await getServerSession(option);
 
 

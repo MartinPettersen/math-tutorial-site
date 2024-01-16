@@ -20,6 +20,21 @@ const subject = {
             type: 'string',
         },
         {
+            name: "image",
+            title: "Image",
+            type: "image",
+            options: {
+              hotspot: true,
+            },
+            fields: [
+              {
+                name: "alt",
+                title: "Alt",
+                type: 'string'
+              },
+            ],
+          },
+        {
             name: 'information',
             title: 'Information',
             type: 'array',

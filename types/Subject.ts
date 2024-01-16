@@ -11,4 +11,6 @@ export type Subject = {
     tests: PortableTextBlock[];
     tags: string[];
     test: Test
+    image: string;
+    alt: string;
 }

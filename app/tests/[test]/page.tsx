@@ -1,5 +1,9 @@
 import { getSubject } from "@/sanity/sanity-utils";
 import React from "react";
+import { getServerSession } from "next-auth";
+import { option } from "@/app/api/auth/[...nextauth]/option";
+  
+
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 
@@ -10,9 +14,18 @@ type Props = {
 };
 
 async function Subject({ params }: Props) {
+  
+  const session = await getServerSession(option);
   const slug = params.test;
 
   const subject = await getSubject(slug);
+
+  let user = ""
+
+  if (session) {
+    user = session.user.email
+  }
+
 
   return (
     <div className="h-[90%] flex items-center justify-center">
@@ -24,7 +37,7 @@ async function Subject({ params }: Props) {
         <h1>Task:</h1>
         <div>{subject.test.testDescription}</div>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 p-2 rounded-md justify-center sm:w-[40%]">
-          <Loader subject={subject} />
+          <Loader subject={subject} user={user}/>
         </div>
       </div>
     </div>

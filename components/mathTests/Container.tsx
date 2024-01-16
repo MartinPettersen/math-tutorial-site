@@ -12,11 +12,27 @@ import Column from "./Column";
 
 type Props = {
   subject: Subject;
+  // eslint-disable-next-line react/require-default-props
+  user?: string;
 };
 
-function Container({ subject }: Props) {
+function Container({ subject, user="" }: Props) {
   const dispatch = useDispatch();
 
+  const submitAchievment = async () => {
+    const res = await fetch("/api/addAchievment", {
+      method: "POST",
+      body: JSON.stringify({ subject, email: user }),
+      headers: new Headers({"content-type": "application/json"}),
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+      console.log(response.message);
+    } 
+  };
+
+  
   const columns = useSelector((state: RootState) => state.container.columns);
   const options = useSelector((state: RootState) => state.container.options);
 
@@ -82,6 +98,9 @@ function Container({ subject }: Props) {
         }
         if (allCorrect) {
           setTestResult(allCorrect);
+          if ( user !== "") {
+            submitAchievment();
+          }
         }
       }
     }
