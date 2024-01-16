@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -10,7 +12,7 @@ function page() {
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
-  const formChange = (e) => {
+  const formChange = (e: any) => {
     const { value } = e.target;
     const { name } = e.target;
     setFormData((prevState) => ({
@@ -19,13 +21,13 @@ function page() {
     }));
   };
 
-  const formSubmit = async (e) => {
+  const formSubmit = async (e: any) => {
     e.preventDefault();
     setErrorMessage("");
     const res = await fetch("/api/Users", {
       method: "POST",
       body: JSON.stringify({ formData }),
-      "content-type": "application/json",
+      headers: new Headers({"content-type": "application/json"}),
     });
 
     if (!res.ok) {
@@ -54,7 +56,7 @@ function page() {
               name="name"
               type="text"
               onChange={formChange}
-              required={true}
+              required
               value={formData.name}
               className="p-2 border-4"
             />
@@ -66,7 +68,7 @@ function page() {
               name="email"
               type="text"
               onChange={formChange}
-              required={true}
+              required
               value={formData.email}
               className="p-2 border-4"
             />
@@ -78,7 +80,7 @@ function page() {
               name="password"
               type="password"
               onChange={formChange}
-              required={true}
+              required
               value={formData.password}
               className="p-2 border-4"
             />
