@@ -14,8 +14,8 @@ function SubjectsDisplay({ subject, completed}: Props) {
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return (
     <Link href={`subject/${subject.slug}`}
-      className={` rounded-md  bg-gray-200 hover:bg-gray-100 border-4 w-full hover:scale-105 transition ${
-        completed ? "bg-yellow-400 flex justify-between hover:border-orange-400 hover:bg-gray-200" : "border-sky-500 hover:border-sky-400"
+      className={` rounded-md  bg-sky-300 hover:bg-sky-200 border-4 w-full hover:scale-105 transition ${
+        completed ? "bg-yellow-400 flex justify-between border-slate-800 hover:border-slate-800 hover:bg-yellow-300" : "border-sky-500 hover:border-sky-400"
       } flex flex-row gap-2 items-center`}
     >
         <Image
@@ -26,7 +26,7 @@ function SubjectsDisplay({ subject, completed}: Props) {
               className="object-cover "
             />
       {subject.subject}{" "}
-      {completed ? <div className="font-extrabold">Completed</div> : <></>}
+      {completed ? <div className="font-extrabold p-2">Completed</div> : <></>}
     </Link>
   );
 }
