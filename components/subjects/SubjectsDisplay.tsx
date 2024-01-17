@@ -13,7 +13,7 @@ function SubjectsDisplay({ subject, completed}: Props) {
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return (
-    <Link href={`subject/${subject.slug}`}
+    <Link href={`../subject/${subject.slug}`}
       className={` rounded-md  bg-sky-300 hover:bg-sky-200 border-4 w-full hover:scale-105 transition ${
         completed ? "bg-yellow-400 flex justify-between border-slate-800 hover:border-slate-800 hover:bg-yellow-300" : "border-sky-500 hover:border-sky-400"
       } flex flex-row gap-2 items-center`}
